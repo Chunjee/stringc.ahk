@@ -1,4 +1,4 @@
-class stringsimilarity {
+class stringc {
 
 	; --- Static Methods ---
 	compare(param_string1, param_string2) {
@@ -27,7 +27,7 @@ class stringsimilarity {
 	}
 
 
-	rate(param_array, param_string, param_function:="") {
+	compareAll(param_array, param_string, param_function:="") {
 		if (!isObject(param_array)) {
 			throw exception("Expected object", -1)
 		}

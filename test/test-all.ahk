@@ -5,29 +5,29 @@ SetBatchLines, -1
 #Include %A_ScriptDir%\..\node_modules
 #Include expect.ahk\export.ahk
 
-stringSimilarity := new stringsimilarity()
+stringc := new stringc()
 assert := new expect()
 
 ;; Test Vars
-testVar := stringSimilarity.rate(["levenshtein","matching","similarity"], "similar")
-testVar2 := stringSimilarity.rate([" hard to    ","hard to","Hard 2"], "Hard to")
+testVar := stringc.compareAll(["levenshtein","matching","similarity"], "similar")
+testVar2 := stringc.compareAll([" hard to    ","hard to","Hard 2"], "Hard to")
 
 
 ;; Test compare()
 assert.category := "compare"
 assert.label("check functional")
-assert.test((stringSimilarity.compare("The eturn of the king", "The Return of the King") > 0.90 ), true)
-assert.test((stringSimilarity.compare("set", "ste") = 0 ), true)
+assert.test((stringc.compare("The eturn of the king", "The Return of the King") > 0.90 ), true)
+assert.test((stringc.compare("set", "ste") = 0 ), true)
 
 assert.label("Check if case matters")
-assert.true((stringSimilarity.compare("The Mask", "the mask") = 1 ))
-assert.true(stringSimilarity.compare("thereturnoftheking", "TheReturnoftheKing") = 1 )
+assert.true((stringc.compare("The Mask", "the mask") = 1 ))
+assert.true(stringc.compare("thereturnoftheking", "TheReturnoftheKing") = 1 )
 StringCaseSense, On
-assert.true(stringSimilarity.compare("thereturnoftheking", "TheReturnoftheKing") = 1 )
+assert.true(stringc.compare("thereturnoftheking", "TheReturnoftheKing") = 1 )
 StringCaseSense, Off
 
 
-;; Test rate()
+;; Test compareAll()
 assert.category := "rate"
 assert.label("ratings object")
 assert.test(testVar.ratings.count(), 3)
@@ -48,10 +48,10 @@ assert.test(testVar2.bestMatch.rating, 1)
 ;; Test closestMatch()
 assert.category := "closestMatch"
 assert.label("basic usage")
-assert.test(stringSimilarity.closestMatch(["ste","one","set"], "setting"), "set")
-assert.test(stringSimilarity.closestMatch(["smarts","smrt","clip-art"], "Smart"), "smarts")
-assert.test(stringSimilarity.closestMatch(["green Subaru Impreza","table in very good","mountain bike with"], "Olive-green table"), "table in very good")
-assert.test(stringSimilarity.closestMatch(["For sale: green Subaru Impreza, 210,000 miles"
+assert.test(stringc.closestMatch(["ste","one","set"], "setting"), "set")
+assert.test(stringc.closestMatch(["smarts","smrt","clip-art"], "Smart"), "smarts")
+assert.test(stringc.closestMatch(["green Subaru Impreza","table in very good","mountain bike with"], "Olive-green table"), "table in very good")
+assert.test(stringc.closestMatch(["For sale: green Subaru Impreza, 210,000 miles"
     , "For sale: table in very good condition, olive green in colour."
     , "Wanted: mountain bike with at least 21 gears."], "Olive-green table for sale, in extremely good condition.")
 , "For sale: table in very good condition, olive green in colour.")
