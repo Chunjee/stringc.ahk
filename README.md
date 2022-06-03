@@ -30,8 +30,8 @@ Including the module provides a class `stringc` with three methods: `.compare`, 
 Returns a fraction between 0 and 1, which indicates the degree of similarity between the two strings. 0 indicates completely different strings, 1 indicates identical strings. The comparison is case-insensitive.
 
 ##### Arguments
-1. string1 (string): The first string
-2. string2 (string): The second string
+string1 (string): The first string
+string2 (string): The second string
 
 Order does not make a difference.
 
@@ -56,22 +56,23 @@ stringc.compare("Olive-green table for sale, in extremely good condition."
 ; => 0.11
 ```
 
-### compareAll(mainString, targetStrings)
+### compareAll(targetStrings, mainString, [function])
 Compares `mainString` against each string in `targetStrings`.
 
 ##### Arguments
-1. mainString (string): The string to match each target string against.
-2. targetStrings (Array): Each string in this array will be matched against the main string.
+targetStrings (array): Each string in this array will be matched against the main string.
+mainString (string): The string to match each target string against.
+function (function): A function to applied to strings prior to comparison.
 
 ##### Returns
 (Object): An object with a `ratings` property, which gives a similarity rating for each target string, and a `bestMatch` property, which specifies which target string was most similar to the main string. The array of `ratings` are sorted from higest rating to lowest.
 
 ##### Example
 ```autohotkey
-stringc.compareAll("Olive-green table for sale, in extremely good condition."
-	, ["For sale: green Subaru Impreza, 210,000 miles"
+stringc.compareAll(["For sale: green Subaru Impreza, 210,000 miles"
 	, "For sale: table in very good condition, olive green in colour."
-	, "Wanted: mountain bike with at least 21 gears."])
+	, "Wanted: mountain bike with at least 21 gears."]
+	, "Olive-green table for sale, in extremely good condition.")
 ; =>
 { ratings:
 	[{ target: "For sale: table in very good condition, olive green in colour.",
@@ -86,21 +87,22 @@ stringc.compareAll("Olive-green table for sale, in extremely good condition."
 ```
 
 
-### closestMatch(mainString, targetStrings)
+### closestMatch(targetStrings, mainString, [function])
 Compares `mainString` against each string in `targetStrings`.
 
 ##### Arguments
-1. mainString (string): The string to match each target string against.
-2. targetStrings (Array): Each string in this array will be matched against the main string.
+mainString (string): The string to match each target string against.
+targetStrings (Array): Each string in this array will be matched against the main string.
+function (function): A function to applied to strings prior to comparison.
 
 ##### Returns
 (String): The string that was most similar to the first argument string.
 
 ##### Example
 ```autohotkey
-stringc.closestMatch("Hard to"
-	, [" hard to    "
+stringc.closestMatch([" hard to    "
 	, "hard to"
-	, "Hard 2"])
+	, "Hard 2"]
+	, "Hard to")
 ; => "hard to"
 ```
