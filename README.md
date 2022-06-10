@@ -1,5 +1,17 @@
-stringc.ahk
-=================
+<div align="center">
+	<a href="https://github.com/chunjee/stringc.ahk">
+		<img src="https://raw.githubusercontent.com/Chunjee/stringc.ahk/2bc5cd367b53698d8c7cd93d19b73f1015728d53/header.svg"/>
+	</a>
+	<br>
+	<br>
+	<a href="https://npmjs.com/package/stringc.ahk">
+		<img src="https://img.shields.io/npm/dm/stringc.ahk?style=for-the-badge">
+	</a>
+	<a href="https://chunjee.github.io/stringc.ahk">
+		<img src="https://img.shields.io/badge/full-documentation-blue?style=for-the-badge">
+	</a>
+	<img src="https://img.shields.io/npm/l/stringc.ahk?color=tan&style=for-the-badge">
+</div>
 
 Finds degree of similarity between two strings, based on [Dice's Coefficient](http://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient), which is mostly better than [Levenshtein distance](http://en.wikipedia.org/wiki/Levenshtein_distance).
 
@@ -23,7 +35,7 @@ ostringc.compare("Hello", "hello")
 ```
 
 ## API
-Including the module provides a class `stringc` with three methods: `.compare`, `.compareAll`, and `.closestMatch`
+Including the module provides a class `stringc` with three methods: `.compare`, `.compareAll`, and `.bestMatch`
 
 
 ### compare(string1, string2)
@@ -87,7 +99,7 @@ stringc.compareAll(["For sale: green Subaru Impreza, 210,000 miles"
 ```
 
 
-### closestMatch(targetStrings, mainString, [function])
+### bestMatch(targetStrings, mainString, [function])
 Compares `mainString` against each string in `targetStrings`.
 
 ##### Arguments
@@ -100,7 +112,7 @@ function (function): A function to applied to strings prior to comparison.
 
 ##### Example
 ```autohotkey
-stringc.closestMatch([" hard to    "
+stringc.bestMatch([" hard to    "
 	, "hard to"
 	, "Hard 2"]
 	, "Hard to")

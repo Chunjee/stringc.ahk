@@ -3,7 +3,7 @@ class stringc {
 	; --- Static Methods ---
 	compare(param_string1, param_string2) {
 		vCount := 0
-		;make default key value 0 instead of a blank string
+		; make default key value 0 instead of a blank string
 		l_arr := {base:{__Get:func("abs").bind(0)}}
 		loop, % vCount1 := strLen(param_string1) - 1 {
 			l_arr["z" subStr(param_string1, A_Index, 2)]++
@@ -15,7 +15,7 @@ class stringc {
 			}
 		}
 		vSDC := round((2 * vCount) / (vCount1 + vCount2), 2)
-		;round to 0 if less than 0.005
+		; round to 0 if less than 0.005
 		if (!vSDC || vSDC < 0.005) {
 			return 0
 		}
@@ -51,7 +51,7 @@ class stringc {
 	}
 
 
-	closestMatch(param_array, param_string, param_function:="") {
+	bestMatch(param_array, param_string, param_function:="") {
 		if (!IsObject(param_array)) {
 			throw exception("Expected object", -1)
 		}

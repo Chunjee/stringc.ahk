@@ -45,13 +45,13 @@ assert.test(testVar2.bestMatch.target, "hard to")
 assert.test(testVar2.bestMatch.rating, 1)
 
 
-;; Test closestMatch()
-assert.category := "closestMatch"
+;; Test bestMatch()
+assert.category := "bestMatch"
 assert.label("basic usage")
-assert.test(stringc.closestMatch(["ste","one","set"], "setting"), "set")
-assert.test(stringc.closestMatch(["smarts","smrt","clip-art"], "Smart"), "smarts")
-assert.test(stringc.closestMatch(["green Subaru Impreza","table in very good","mountain bike with"], "Olive-green table"), "table in very good")
-assert.test(stringc.closestMatch(["For sale: green Subaru Impreza, 210,000 miles"
+assert.test(stringc.bestMatch(["ste","one","set"], "setting"), "set")
+assert.test(stringc.bestMatch(["smarts","smrt","clip-art"], "Smart"), "smarts")
+assert.test(stringc.bestMatch(["green Subaru Impreza","table in very good","mountain bike with"], "Olive-green table"), "table in very good")
+assert.test(stringc.bestMatch(["For sale: green Subaru Impreza, 210,000 miles"
     , "For sale: table in very good condition, olive green in colour."
     , "Wanted: mountain bike with at least 21 gears."], "Olive-green table for sale, in extremely good condition.")
 , "For sale: table in very good condition, olive green in colour.")
