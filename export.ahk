@@ -1,7 +1,14 @@
 class stringc {
 
 	; --- Static Methods ---
-	compare(param_string1, param_string2) {
+	compare(param_string1, param_string2, param_function:="") {
+		; prepare
+		if (this._internal_isFunction(param_function)) {
+			param_string1 := param_function.call(param_string1, key, param_array, param_string2)
+			param_string2 := param_function.call(param_string2, key, param_array, param_string1)
+		}
+
+		; perform
 		vCount := 0
 		; make default key value 0 instead of a blank string
 		l_arr := {base:{__Get:func("abs").bind(0)}}
