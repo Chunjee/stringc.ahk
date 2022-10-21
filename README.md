@@ -38,12 +38,15 @@ ostringc.compare("Hello", "hello")
 Including the module provides a class `stringc` with three methods: `.compare`, `.compareAll`, and `.bestMatch`
 
 
-### compare(string1, string2)
+### compare(string1, string2, [function])
 Returns a fraction between 0 and 1, which indicates the degree of similarity between the two strings. 0 indicates completely different strings, 1 indicates identical strings. The comparison is case-insensitive.
 
 ##### Arguments
 string1 (string): The first string
+
 string2 (string): The second string
+
+function (function): A function to applied to both strings prior to comparison.
 
 Order does not make a difference.
 
@@ -73,8 +76,10 @@ Compares `mainString` against each string in `targetStrings`.
 
 ##### Arguments
 targetStrings (array): Each string in this array will be matched against the main string.
+
 mainString (string): The string to match each target string against.
-function (function): A function to applied to strings prior to comparison.
+
+function (function): A function to applied to each element in `targetStrings` prior to comparison.
 
 ##### Returns
 (Object): An object with a `ratings` property, which gives a similarity rating for each target string, and a `bestMatch` property, which specifies which target string was most similar to the main string. The array of `ratings` are sorted from higest rating to lowest.
