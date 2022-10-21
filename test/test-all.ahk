@@ -16,7 +16,7 @@ testVar2 := stringc.compareAll([" hard to    ","hard to","Hard 2"], "Hard to")
 ;; Test compare()
 assert.category := "compare"
 assert.label("check functional")
-assert.test((stringc.compare("The eturn of the king", "The Return of the King") > 0.90 ), true)
+assert.true((stringc.compare("The eturn of the king", "The Return of the King") > 0.90 ))
 assert.test((stringc.compare("set", "ste") = 0 ), true)
 
 assert.label("Check if case matters")
@@ -25,6 +25,13 @@ assert.true(stringc.compare("thereturnoftheking", "TheReturnoftheKing") = 1 )
 StringCaseSense, On
 assert.true(stringc.compare("thereturnoftheking", "TheReturnoftheKing") = 1 )
 StringCaseSense, Off
+
+assert.label("check function argument")
+assert.true((stringc.compare("    The Return of the King   ", "The Return of the King") != 1 ))
+assert.true((stringc.compare("    The Return of the King   ", "The Return of the King", func("fn_trimSpaces")) == 1 ))
+fn_trimSpaces(param_input) {
+    return trim(param_input)
+}
 
 
 ;; Test compareAll()
