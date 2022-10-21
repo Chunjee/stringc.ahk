@@ -1,6 +1,6 @@
 {
 	"name": "stringc.ahk",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Finds degree of similarity between strings, based on Dice's Coefficient, which is mostly better than Levenshtein distance.",
 	"main": "export.ahk",
 	"repository": {
