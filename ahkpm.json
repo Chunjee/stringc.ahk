@@ -1,0 +1,14 @@
+{
+	"version": "0.2.0",
+	"description": "Finds degree of similarity between strings, based on Dice's Coefficient, which is mostly better than Levenshtein distance.",
+	"repository": "https://github.com/Chunjee/stringc.ahk",
+	"website": "https://github.com/Chunjee/stringc.ahk",
+	"license": "MIT",
+	"issueTracker": "https://github.com/Chunjee/stringc.ahk/issues",
+	"include": "export.ahk",
+	"author": {
+		"name": "Shawn Brooker",
+		"website": "https://github.com/chunjee"
+	},
+	"dependencies": {}
+}
