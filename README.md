@@ -7,8 +7,8 @@
 	<a href="https://npmjs.com/package/stringc.ahk">
 		<img src="https://img.shields.io/npm/dm/stringc.ahk?style=for-the-badge">
 	</a>
-	<a href="https://chunjee.github.io/stringc.ahk">
-		<img src="https://img.shields.io/badge/full-documentation-blue?style=for-the-badge">
+	<a href="https://github.com/Chunjee/stringc.ahk#api">
+		<img src="https://img.shields.io/badge/documentation-blue?style=for-the-badge">
 	</a>
 	<img src="https://img.shields.io/npm/l/stringc.ahk?color=tan&style=for-the-badge">
 </div>
