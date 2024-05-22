@@ -5,7 +5,7 @@
 	<br>
 	<br>
 	<a href="https://npmjs.com/package/stringc.ahk">
-		<img src="https://img.shields.io/npm/dm/stringc.ahk?style=for-the-badge">
+		<img src="https://img.shields.io/npm/dy/stringc.ahk?style=for-the-badge">
 	</a>
 	<a href="https://github.com/Chunjee/stringc.ahk#api">
 		<img src="https://img.shields.io/badge/documentation-blue?style=for-the-badge">
@@ -79,7 +79,7 @@ targetStrings (array): Each string in this array will be matched against the mai
 
 mainString (string): The string to match each target string against.
 
-function (function): A function to applied to each element in `targetStrings` prior to comparison.
+function (function): A function to applied to each element prior to comparison.
 
 ##### Returns
 (Object): An object with a `ratings` property, which gives a similarity rating for each target string, and a `bestMatch` property, which specifies which target string was most similar to the main string. The array of `ratings` are sorted from higest rating to lowest.
@@ -110,7 +110,7 @@ Compares `mainString` against each string in `targetStrings`.
 ##### Arguments
 mainString (string): The string to match each target string against.
 targetStrings (Array): Each string in this array will be matched against the main string.
-function (function): A function to applied to strings prior to comparison.
+function (function): A function to applied to each element prior to comparison.
 
 ##### Returns
 (String): The string that was most similar to the first argument string.
