@@ -1,6 +1,7 @@
 SetBatchLines, -1
 #SingleInstance, force
 #NoTrayIcon
+#Requires AutoHotkey v1.1.33+
 #Include %A_ScriptDir%\..\export.ahk
 #Include %A_ScriptDir%\..\node_modules
 #Include expect.ahk\export.ahk
@@ -26,11 +27,17 @@ StringCaseSense, On
 assert.true(stringc.compare("thereturnoftheking", "TheReturnoftheKing") = 1 )
 StringCaseSense, Off
 
-assert.label("check function argument")
+assert.label("function argument")
 assert.true((stringc.compare("    The Return of the King   ", "The Return of the King") != 1 ))
 assert.true((stringc.compare("    The Return of the King   ", "The Return of the King", func("fn_trimSpaces")) == 1 ))
 fn_trimSpaces(param_input) {
-    return trim(param_input)
+	return trim(param_input)
+}
+assert.label("function argument using all four parameters")
+stringc.compare("", "", func("fn_allTwoArgs"))
+fn_allTwoArgs(param_input*) {
+	global assert
+	assert.true((param_input.count() == 2))
 }
 
 
@@ -51,6 +58,14 @@ assert.test(testVar.bestMatch.rating, 0.80)
 assert.test(testVar2.bestMatch.target, "hard to")
 assert.test(testVar2.bestMatch.rating, 1)
 
+assert.label("function argument using all four parameters")
+stringc.compareAll(["levenshtein","matching","similarity"], "The Return of the King", func("fn_allFourArgs"))
+stringc.compareAll([], "", func("fn_allFourArgs"))
+fn_allFourArgs(param_input*) {
+	global assert
+	assert.true((param_input.count() == 4))
+}
+
 
 ;; Test bestMatch()
 assert.category := "bestMatch"
@@ -59,9 +74,10 @@ assert.test(stringc.bestMatch(["ste","one","set"], "setting"), "set")
 assert.test(stringc.bestMatch(["smarts","smrt","clip-art"], "Smart"), "smarts")
 assert.test(stringc.bestMatch(["green Subaru Impreza","table in very good","mountain bike with"], "Olive-green table"), "table in very good")
 assert.test(stringc.bestMatch(["For sale: green Subaru Impreza, 210,000 miles"
-    , "For sale: table in very good condition, olive green in colour."
-    , "Wanted: mountain bike with at least 21 gears."], "Olive-green table for sale, in extremely good condition.")
-, "For sale: table in very good condition, olive green in colour.")
+	, "For sale: table in very good condition, olive green in colour."
+	, "Wanted: mountain bike with at least 21 gears."], "Olive-green table for sale, in extremely good condition.")
+	, "For sale: table in very good condition, olive green in colour.")
+stringc.bestMatch([], "", func("fn_allFourArgs"))
 
 
 assert.final()
